@@ -89,7 +89,8 @@ class App extends React.Component{
         break;
       default:
         await this.setState((previousState)=>{
-          const val = (['AC', 'equals', '-','*','+','/'].includes(previousState.lastInput)) ? e.target.id : previousState.display + e.target.id; 
+          let val = (['AC', 'equals', '-','*','+','/'].includes(previousState.lastInput)) ? e.target.id : previousState.display + e.target.id; 
+          val = (e.target.id === 'zero')? '0':val;
           let form = (['AC', 'equals', '-','*','+','/'].includes(previousState.lastInput))? [...previousState.formula] : [...previousState.formula.slice(0,-1)];
           return({
             ...previousState,
